@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://jg365kmkown7"]
+
+[ext_resource type="Script" uid="uid://btfr1l6imxsec" path="res://Scripts/settings.gd" id="1_4geyq"]
+[ext_resource type="FontFile" uid="uid://5h3262rxtnwd" path="res://Assets/Fonts/mario.ttf" id="2_i44u3"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4geyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 408.0
+offset_bottom = 264.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+text = "SET VOLUME"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+text = "EXIT"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

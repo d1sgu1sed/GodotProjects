@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqtj41fw8ntpl"]
+
+[ext_resource type="Texture2D" uid="uid://loxgfm7l8ci3" path="res://Assets/Sprites/background.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://djyqvarbvstp0" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="FontFile" uid="uid://5h3262rxtnwd" path="res://Assets/Fonts/mario.ttf" id="3_158mb"]
+[ext_resource type="PackedScene" uid="uid://jg365kmkown7" path="res://Scenes/settings.tscn" id="3_cayip"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_xhh6f")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(573.988, 328)
+scale = Vector2(1.0104, 1.03704)
+texture = ExtResource("1_1rerr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 416.0
+offset_top = 264.0
+offset_right = 768.0
+offset_bottom = 512.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_158mb")
+text = "PLAY
+"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_158mb")
+text = "SETTINGS"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_158mb")
+text = "EXIT"
+
+[node name="Settings" parent="." instance=ExtResource("3_cayip")]
+visible = false
+offset_left = 368.0
+offset_top = 207.0
+offset_right = 368.0
+offset_bottom = 207.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="exit_settings_menu" from="Settings" to="." method="_on_settings_exit_settings_menu"]
