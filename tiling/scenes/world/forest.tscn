@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://xxnch6ygndtc"]
+[gd_scene load_steps=15 format=3 uid="uid://xxnch6ygndtc"]
 
 [ext_resource type="Script" uid="uid://dtgseq4654dh1" path="res://scenes/world/random_forest.gd" id="1_bpy6v"]
 [ext_resource type="Texture2D" uid="uid://cj50d7kbdlaid" path="res://assets/tilesets/Water.png" id="2_tvyim"]
 [ext_resource type="AudioStream" uid="uid://d1j3x1xmuvbuf" path="res://assets/sound/backround_1.ogg" id="3_euhvq"]
 [ext_resource type="Texture2D" uid="uid://bh388m0ssef00" path="res://assets/tilesets/Grass.png" id="3_tvyim"]
 [ext_resource type="Texture2D" uid="uid://dbtqvlmwufwxo" path="res://assets/objects/grass_biom.png" id="4_euhvq"]
+[ext_resource type="Texture2D" uid="uid://dsw2kcgym4i74" path="res://assets/objects/wood_bridge.png" id="4_uuut2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uuut2"]
 texture = ExtResource("2_tvyim")
@@ -22,7 +23,7 @@ texture = ExtResource("2_tvyim")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_uuut2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_euhvq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcop0"]
 texture = ExtResource("3_tvyim")
 0:0/0 = 0
 1:0/0 = 0
@@ -98,7 +99,25 @@ texture = ExtResource("3_tvyim")
 
 [sub_resource type="TileSet" id="TileSet_uuut2"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_euhvq")
+sources/0 = SubResource("TileSetAtlasSource_vcop0")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bowih"]
+texture = ExtResource("4_uuut2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vcop0"]
+sources/0 = SubResource("TileSetAtlasSource_bowih")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1da0x"]
 texture = ExtResource("4_euhvq")
@@ -153,12 +172,17 @@ sources/0 = SubResource("TileSetAtlasSource_1da0x")
 
 [node name="Forest" type="Node2D"]
 script = ExtResource("1_bpy6v")
+size = Vector2i(70, 70)
+random_type = 1
 
 [node name="Water" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_1da0x")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_uuut2")
+
+[node name="Bridge" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_vcop0")
 
 [node name="Trees" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_bowih")

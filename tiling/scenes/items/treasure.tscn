@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxtdfpjgjkq2n"]
+
+[ext_resource type="Script" uid="uid://dtlq68gr65keb" path="res://scenes/items/treasure.gd" id="1_ia66g"]
+[ext_resource type="Texture2D" uid="uid://dvhr3gk8vxi8y" path="res://assets/objects/chicken_house.png" id="1_xllo6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia66g"]
+size = Vector2(16, 20)
+
+[node name="Treasure" type="Node2D"]
+script = ExtResource("1_ia66g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xllo6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ia66g")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]

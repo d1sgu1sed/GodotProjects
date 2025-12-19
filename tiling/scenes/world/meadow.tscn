@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://dpih8xrfd7t88"]
+[gd_scene load_steps=13 format=4 uid="uid://dpih8xrfd7t88"]
 
+[ext_resource type="Script" uid="uid://c4w2333y3wjnj" path="res://scenes/world/meadow.gd" id="1_b3k4m"]
 [ext_resource type="AudioStream" uid="uid://d1j3x1xmuvbuf" path="res://assets/sound/backround_1.ogg" id="1_rsdmr"]
 [ext_resource type="Texture2D" uid="uid://cj50d7kbdlaid" path="res://assets/tilesets/Water.png" id="2_7oa7k"]
 [ext_resource type="Texture2D" uid="uid://bh388m0ssef00" path="res://assets/tilesets/Grass.png" id="3_ngdvd"]
 [ext_resource type="Texture2D" uid="uid://dbtqvlmwufwxo" path="res://assets/objects/grass_biom.png" id="4_is006"]
+[ext_resource type="PackedScene" uid="uid://fes2idl3lsl0" path="res://scenes/items/teleport.tscn" id="6_mur1j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngdvd"]
 texture = ExtResource("2_7oa7k")
@@ -125,7 +127,7 @@ texture = ExtResource("3_ngdvd")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_is006")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3k4m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mur1j"]
 texture = ExtResource("4_is006")
 0:0/0 = 0
 0:0/0/z_index = 2
@@ -177,9 +179,10 @@ texture = ExtResource("4_is006")
 
 [sub_resource type="TileSet" id="TileSet_mur1j"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_b3k4m")
+sources/0 = SubResource("TileSetAtlasSource_mur1j")
 
 [node name="Meadow" type="Node2D"]
+script = ExtResource("1_b3k4m")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_rsdmr")
@@ -201,3 +204,13 @@ tile_set = SubResource("TileSet_b3k4m")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAiABQAAAAAAAEAAAAiABMAAAAAAAAAAAAlABUAAAAAAAEAAAAlABQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_mur1j")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(576, 344)
+
+[node name="Teleport" parent="." instance=ExtResource("6_mur1j")]
+position = Vector2(624, 301)
+
+[node name="Teleport2" parent="." instance=ExtResource("6_mur1j")]
+position = Vector2(528, 301)
+destination = "maze"

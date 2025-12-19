@@ -1,16 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://jybvk2qe8s6d"]
+[gd_scene load_steps=2 format=3 uid="uid://jybvk2qe8s6d"]
 
-[ext_resource type="PackedScene" uid="uid://u845g1agcf3k" path="res://scenes/player/player.tscn" id="1_53q0u"]
-[ext_resource type="PackedScene" uid="uid://xxnch6ygndtc" path="res://scenes/world/forest.tscn" id="2_pjrb6"]
+[ext_resource type="Script" uid="uid://ccykiekbbblf5" path="res://main/main.gd" id="1_53q0u"]
 
 [node name="Main" type="Node2D"]
-
-[node name="UI" type="Node2D" parent="."]
+script = ExtResource("1_53q0u")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Forest" parent="World" instance=ExtResource("2_pjrb6")]
-size = Vector2i(50, 50)
-
-[node name="Player" parent="World" instance=ExtResource("1_53q0u")]
-position = Vector2(96, 72)
+[node name="UI" type="Node2D" parent="."]
