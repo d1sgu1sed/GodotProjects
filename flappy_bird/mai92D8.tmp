@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://3cnnje6pbc1v"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_uedrb"]
+[ext_resource type="PackedScene" uid="uid://bnlwfqjeai12" path="res://Ground.tscn" id="2_i88jj"]
+[ext_resource type="PackedScene" uid="uid://bk3tc525p1kjw" path="res://player.tscn" id="2_jaji3"]
+[ext_resource type="Script" path="res://Scripts/Debug.gd" id="4_xc2en"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_uedrb")
+
+[node name="Player" parent="." instance=ExtResource("2_jaji3")]
+scale = Vector2(0.3, 0.3)
+
+[node name="Debug" type="Label" parent="."]
+offset_left = 186.0
+offset_top = 13.0
+offset_right = 346.0
+offset_bottom = 36.0
+text = "Debug"
+script = ExtResource("4_xc2en")
+
+[node name="Ground" parent="." instance=ExtResource("2_i88jj")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true

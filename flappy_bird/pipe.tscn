@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpm6atwwl5pmp"]
+
+[ext_resource type="Script" uid="uid://boe0ef37sn1sa" path="res://Scripts/pipe.gd" id="1_4vl8m"]
+[ext_resource type="Texture2D" uid="uid://l63kvmkpmoea" path="res://Sprites/pipe.png" id="2_arayy"]
+[ext_resource type="AudioStream" uid="uid://u5rt106ph4lh" path="res://Audio/hit.ogg" id="3_xwbsa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy7og"]
+size = Vector2(44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqfbn"]
+size = Vector2(96, 721)
+
+[node name="Pipe" type="StaticBody2D"]
+position = Vector2(280, 251)
+script = ExtResource("1_4vl8m")
+metadata/_edit_horizontal_guides_ = [51.0, 251.0]
+
+[node name="Upper" type="Sprite2D" parent="."]
+position = Vector2(37, -267.5)
+scale = Vector2(1.22917, 2.24687)
+texture = ExtResource("2_arayy")
+flip_v = true
+region_rect = Rect2(528, 52, 97, 205)
+
+[node name="Lower" type="Sprite2D" parent="."]
+position = Vector2(40, 749)
+scale = Vector2(1.16667, 2.25)
+texture = ExtResource("2_arayy")
+region_rect = Rect2(528, 52, 97, 205)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 80)
+shape = SubResource("RectangleShape2D_yy7og")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="UpperColl" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(38.125, -268)
+shape = SubResource("RectangleShape2D_jqfbn")
+
+[node name="LowerColl" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(40, 749.5)
+shape = SubResource("RectangleShape2D_jqfbn")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xwbsa")
+volume_db = -15.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://3cnnje6pbc1v"]
+
+[ext_resource type="Script" uid="uid://coyvngakji8i8" path="res://Scripts/main.gd" id="1_uedrb"]
+[ext_resource type="Texture2D" uid="uid://tnv0mmgs8qj0" path="res://Sprites/background-day.png" id="2_3j8pg"]
+[ext_resource type="PackedScene" uid="uid://bnlwfqjeai12" path="res://Ground.tscn" id="2_i88jj"]
+[ext_resource type="PackedScene" uid="uid://bk3tc525p1kjw" path="res://player.tscn" id="2_jaji3"]
+[ext_resource type="AudioStream" uid="uid://c10awe2pf7bsj" path="res://Audio/lose.mp3" id="5_lquwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1656, 26)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_uedrb")
+metadata/_edit_horizontal_guides_ = [0.0, 640.0]
+metadata/_edit_vertical_guides_ = [360.0, 0.0]
+
+[node name="Background-day" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(728, 460)
+scale = Vector2(1.15556, 1.04)
+texture = ExtResource("2_3j8pg")
+
+[node name="Player" parent="." instance=ExtResource("2_jaji3")]
+
+[node name="Ground" parent="." instance=ExtResource("2_i88jj")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Score" type="RichTextLabel" parent="."]
+z_index = 2
+offset_left = 1344.0
+offset_right = 1439.0
+offset_bottom = 40.0
+text = "Score: "
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(732, 3)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lquwl")
+volume_db = -10.306

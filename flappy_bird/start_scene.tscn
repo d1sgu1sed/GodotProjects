@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4rjd4l3b0ajp"]
+
+[ext_resource type="Script" uid="uid://chx4bbawkvt6n" path="res://Scripts/Start.gd" id="1_sejs1"]
+[ext_resource type="Texture2D" uid="uid://tnv0mmgs8qj0" path="res://Sprites/background-day.png" id="2_qh6kj"]
+[ext_resource type="PackedScene" uid="uid://bk3tc525p1kjw" path="res://player.tscn" id="2_vug35"]
+[ext_resource type="PackedScene" uid="uid://bnlwfqjeai12" path="res://Ground.tscn" id="4_ngwne"]
+[ext_resource type="Texture2D" uid="uid://ct2kf4u4jnv0m" path="res://Sprites/message.png" id="4_y4om4"]
+[ext_resource type="AudioStream" uid="uid://dv8yt2r57qsen" path="res://Audio/music.mp3" id="6_4a4tu"]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_sejs1")
+metadata/_edit_horizontal_guides_ = [-165.0]
+
+[node name="Background-day" type="Sprite2D" parent="."]
+position = Vector2(728, 460)
+scale = Vector2(1.156, 1.04)
+texture = ExtResource("2_qh6kj")
+
+[node name="Ground" parent="." instance=ExtResource("4_ngwne")]
+
+[node name="Score" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 1320.0
+offset_top = 8.0
+offset_right = 1440.0
+offset_bottom = 32.0
+text = "Score: "
+
+[node name="Start Message" type="Sprite2D" parent="."]
+position = Vector2(720, 473)
+scale = Vector2(0.944444, 0.677778)
+texture = ExtResource("4_y4om4")
+
+[node name="Player" parent="." instance=ExtResource("2_vug35")]
+position = Vector2(696, 524)
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4a4tu")
+parameters/looping = true

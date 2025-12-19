@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+export/flappy-bird.apple-touch-icon.png
+export/flappy-bird.audio.worklet.js
+export/flappy-bird.icon.png
+export/flappy-bird.js
+export/flappy-bird.pck
+export/flappy-bird.png
+export/flappy-bird.wasm
+export/flappy-bird.worker.js
+export/index.html
+export_presets.cfg
